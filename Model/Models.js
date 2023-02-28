@@ -19,12 +19,12 @@ var Schema = mongoose.Schema({
 },{timestamps    : true});
 
 Schema.path('name').validate(async (name) => {
-    const nameCount = await mongoose.models.save.countDocuments({name})
+    const nameCount = await mongoose.models.user.countDocuments({name})
     return !nameCount
 },'Name already Exists');
 
 
-var users = module.exports = mongoose.model('save',Schema);
+var users = module.exports = mongoose.model('user',Schema);
 module.exports.get = function(callback,limit){
     users.find(callback).limit(limit);
 }
