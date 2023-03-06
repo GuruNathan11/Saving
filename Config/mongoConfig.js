@@ -1,4 +1,4 @@
 module.exports = {
-    'url' : 'mongodb://127.0.0.1:/saving',
-    'MONGO_URI': ''
+    'url' : 'mongodb://127.0.0.1:/Amc',
+    'MONGO_URI': 'mongodb+srv://Gurunathan:Gurunathan11@cluster0.aeeridr.mongodb.net/stock?retryWrites=true&w=majority'
 }

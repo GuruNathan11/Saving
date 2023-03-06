@@ -14,26 +14,15 @@ app.use(cors());
 mongoose.set('strictQuery', false);
 const db = mongoose.connect(mongodb.url)
 db.then(() => console.log("DB Connected successfully"))
-.catch(error => console.log("Failed to connect with DB",error),3000)
+.catch(error => console.log("Failed to connect with DB",error))
 
-// const { MongoClient } = require('mongodb')
-// const client = new MongoClient('mongodb://127.0.0.1:27017')
-// client.connect()
-    // .then(() => {
-    //     console.log('Connected Successfully!') 
-    //     //Close the database connection  
-    //     // console.log('Exiting..')
-    //     setTimeout(() =>{console.log('Existing!')},3000)
-    //     db.close()
-    // })
-    // .catch(error => console.log('Failed to connect!', error));
 
-    var port = process.env.PORT || 2020
+    var port = process.env.PORT || 4040
     app.listen(port,() => {console.log("App listening on port",port)});
 
     app.get("/", (req,res) => res.send ("Welcome to Saving API"));
 
-    app.use("/saving",apiRoutes);
+    app.use("/config/amc",apiRoutes);
     
 
     module.exports = app ;

@@ -3,14 +3,17 @@ let router = require('express').Router();
 router.get('/',function(req,res){
     res.json({
         status : 'API Works',
-        message : "Welcome to Saving"
+        message : "Welcome to AMC"
     })
 });
 
 const users = require('../Model/Models');
+const countermodel =require('../Model/Models');
 router.post('/add',(req,res) => {
     var user = new users();
-    user.name = req.body.name;
+    user.amc = req.body.amc;
+   
+  
     user.save((err,users) => {
         if(err) {
             return res.status(400).send({
@@ -19,7 +22,7 @@ router.post('/add',(req,res) => {
         }
         else {
             return res.status(201).send({
-                message : "Saving Scheme added successfully",
+                message : "AMC added successfully",
                 data : user
             });
         }
@@ -28,13 +31,16 @@ router.post('/add',(req,res) => {
 
 var Controller = require('../Controller/Controller.js');
 
-router.route('/users')
+router.route('/get-all')
 .get(Controller.index)
 
-router.route('/users/:user_id')
+router.route('/:user_id')
 .get(Controller.view)
 .patch(Controller.update)
 .put(Controller.update)
-.delete(Controller.Delete);
+.delete(Controller.Delete)
+
+router.route('/del-all')
+.post(Controller.delall)
 
 module.exports = router;
